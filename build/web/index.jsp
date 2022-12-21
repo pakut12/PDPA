@@ -77,7 +77,6 @@
             $(document).ready(function(){
                 chack();
                 hover();
-                
                 $("#confirm").click(function(){
                     confirm();
                 });
