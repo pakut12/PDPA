@@ -11,27 +11,173 @@
 <html>
     <head>
         <%@ include file = "share/header.jsp" %>
+        
     </head>
     <body>
+        <%
+            String status = (String) request.getAttribute("status_confirm");
+            if (status == null) {
+                request.setAttribute("status_error", "true");
+                getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+            }
+        %>
         <div class="container mt-5">
             <div class="text-center h2 mb-3 text-primary"><b>PDPA</b></div>
             <form method="post" action="Confirm" id="myform">
-                <div class="card shadow-lg col-sm-12 col-md-12 mx-auto border-primary" id="mycard">
-                    <div class="card-body overflow-auto " style="height:40vh">
-                      
+                <div class="card shadow-lg col-sm-12 col-md-10 mx-auto border-primary "  id="mycard">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 mx-auto ">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">รหัสบัตรประชาชน</label>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">คำนำหน้า</label>
+                                            <select class="form-select form-select-sm">
+                                                <option value=""></option>
+                                                <option value=""></option>
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">ชื่อ</label>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">นามสกุล</label>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">วันเดือนปีเกิด</label>
+                                            <input type="date" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">อายุ</label>
+                                            <input type="email" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">หมู่บ้าน</label>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">เลขที่</label>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">หมู่ที่</label>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">ซอย</label>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">ถนน</label>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">ตำบล/เเขวง</label>
+                                            <input type="text" id="district" class="form-control form-control-sm">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">อำเภอ/เขต</label>
+                                            <input type="text" id="amphoe" class="form-control form-control-sm">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">จังหวัด</label>
+                                            <input type="text" id="province" class="form-control form-control-sm">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">รหัสไปรษณีย์</label>
+                                            <input type="text" id="zipcode" class="form-control form-control-sm">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">โทรศัพท์บ้าน</label>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">โทรศัพท์มือถือ</label>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Email</label>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-primary btn-sm w-100 mt-3"  type="submit" id="confirm" name="confirm">ยืนยัน</button>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
                     </div>
-                    
                 </div>
-                <div class="text-center">
-                    <button class="btn btn-primary col-sm-12 col-md-1 mt-3" disabled type="submit" id="confirm" name="confirm">ยืนยัน</button>
-                </div>
+                <br>
             </form>
         </div>
         <script>
-           
-            $(document).ready(function(){
-               
-            })
+            $( document ).ready(function() {
+                $.Thailand({
+                    $district: $('#district'), // input ของตำบล
+                    $amphoe: $('#amphoe'), // input ของอำเภอ
+                    $province: $('#province'), // input ของจังหวัด
+                    $zipcode: $('#zipcode'), // input ของรหัสไปรษณีย์
+                });
+            });
         </script>
     </body>
 </html>

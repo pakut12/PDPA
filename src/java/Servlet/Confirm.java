@@ -29,10 +29,13 @@ public class Confirm extends HttpServlet {
             request.setCharacterEncoding("utf8");
             String CheckPDPA = request.getParameter("CheckPDPA");
             String url = "";
+           
             if (CheckPDPA.equals("true")) {
                 url = "/register.jsp";
+                request.setAttribute("status_confirm", "true");
             } else {
                 url = "/index.jsp";
+                request.setAttribute("status_confirm", "false");
             }
             getServletContext().getRequestDispatcher(url).forward(request, response);
         } catch (Exception e) {
