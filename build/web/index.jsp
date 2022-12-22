@@ -32,17 +32,14 @@
         
         <div class="container mt-3">
             
-            
-            <div class="d-flex">
-                <a href="index.jsp" ><img src="img/PDPA.jpg" class="w-100 h-50"></a>
-            </div>
+            <a href="index.jsp" ><img src="img/PDPA.jpg" class="img-fluid"></a>
             
             <form method="post" action="Confirm" id="myform">
                 <div class="card shadow-lg col-sm-12 col-md-12 mx-auto border-primary" id="mycard">
                     <div class="card-body " >
-                        <div class="h5 mb-3 text-center"><b>แนวปฏิบัติสําหรับลูกค้า คู่ค้าและผู้มาติดต่อภายนอก</b></div>
+                        <div class="h5 mb-3 text-center "><b>แนวปฏิบัติสําหรับลูกค้า คู่ค้าและผู้มาติดต่อภายนอก</b></div>
                         <div class="overflow-hidden" style="height:50vh">
-                            <iframe src="https://drive.google.com/file/d/13bpe4Yibm_iDwME5r8ppTO_t0DMxZrGb/preview" style="width:100%; height:650px;" frameborder="0"></iframe>
+                            <iframe src="https://drive.google.com/file/d/13bpe4Yibm_iDwME5r8ppTO_t0DMxZrGb/preview" style="width:100%; height:650px;" frameborder="1"></iframe>
                         </div>
                         <div class="d-flex justify-content-center mt-3">
                             <div class="form-check form-check-inline">
@@ -59,6 +56,7 @@
                 <div class="text-center">
                     <button class="btn btn-primary col-sm-12 col-md-1 mt-3" disabled type="submit" id="confirm" name="confirm">ยืนยัน</button>
                 </div>
+                <br>
             </form>
         </div>
         
