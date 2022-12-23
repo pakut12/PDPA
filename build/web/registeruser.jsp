@@ -27,7 +27,7 @@
                 <div class="card shadow-lg col-sm-12 col-md-10 mx-auto border-primary "  id="mycard">
                     <div class="row">
                         <div class="col-sm-12 col-md-12 mx-auto ">
-                            <div class="container overflow-auto" style="height:60vh;">
+                            <div class="container overflow-auto" style="height:70vh;">
                                 <div class="h4 mt-3">1.ข้อมูลส่วนตัว</div>
                                 <hr>
                                 <div class="row">
@@ -88,7 +88,7 @@
                                         </div>
                                     </div>
                                 </div>
-                               
+                                
                                 <div class="h4 mt-3">2.ข้อมูลสถานที่ติดต่อ</div>
                                 <hr>
                                 <div class="row">
@@ -168,14 +168,16 @@
                                     </div>
                                 </div>
                                 
-                                <div class="text-center">
-                                    <button class="btn btn-primary btn-sm w-100 mb-3"  type="submit" id="confirm" name="confirm">ยืนยัน</button>
-                                    <button class="btn btn-danger btn-sm w-100 mb-3"  type="reset" id="reset" name="reset">ล้างข้อมูล</button>
-                                </div>
+                                
                                 <br>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="mt-3 text-center">
+                    <button class="btn btn-primary btn-md  mb-3"  type="submit" id="confirm" name="confirm">ยืนยัน</button>
+                    &nbsp;
+                    <button class="btn btn-danger btn-md  mb-3"  type="reset" id="reset" name="reset">ล้างข้อมูล</button>
                 </div>
                 <br>
             </form>
@@ -186,15 +188,15 @@
                     $district: $('#district'), // input ของตำบล
                     $amphoe: $('#amphoe'), // input ของอำเภอ
                     $province: $('#province'), // input ของจังหวัด
-                    $zipcode: $('#zipcode'), // input ของรหัสไปรษณีย์
+                    $zipcode: $('#zipcode')// input ของรหัสไปรษณีย์
                 });
                 
                 $("#idcard").inputmask({"mask": "9-9999-99999-99-9"});
                 $("#txt_tel1").inputmask({"mask": "999-999-9999"});
                 $("#txt_tel2").inputmask({"mask": "999-999-9999"});
                 $("#confirm").click(function(){
-                    alert($("#txt_tel").val().replace(/-/g, ''));
-                    // $("#myform").addClass("was-validated");
+                    // alert($("#txt_tel").val().replace(/-/g, ''));
+                    $("#myform").addClass("was-validated");
                 })
             });
         </script>
