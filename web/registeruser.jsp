@@ -32,7 +32,7 @@
                                     <div class="col-sm-12 col-md-12">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">รหัสบัตรประชาชน</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="text" class="form-control form-control-sm" id="idcard"  required>
                                         </div>
                                     </div>
                                 </div>
@@ -49,19 +49,19 @@
                                     <div class="col-sm-12 col-md-3">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">ชื่อ</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1"  required>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-3">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">นามสกุล</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1"  required>
                                         </div>
                                     </div>
-                                     <div class="col-sm-12 col-md-3">
+                                    <div class="col-sm-12 col-md-3">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">วันเดือนปีเกิด</label>
-                                            <input type="date" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="date" class="form-control form-control-sm" id="exampleFormControlInput1"  required>
                                         </div>
                                     </div>
                                 </div>
@@ -69,13 +69,13 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">วันเดือนปีเกิด</label>
-                                            <input type="date" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="date" class="form-control form-control-sm" id="exampleFormControlInput1"  required>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">อายุ</label>
-                                            <input type="email" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="email" class="form-control form-control-sm" id="exampleFormControlInput1"  required>
                                         </div>
                                     </div>
                                 </div>
@@ -84,19 +84,19 @@
                                     <div class="col-sm-12 col-md-4">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">หมู่บ้าน</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1"  required>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-4">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">เลขที่</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1"  required>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-4">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">หมู่ที่</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1"  required>
                                         </div>
                                     </div>
                                 </div>
@@ -104,13 +104,13 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">ซอย</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="text"  class="form-control form-control-sm" id="exampleFormControlInput1"  required>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">ถนน</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1"  required>
                                         </div>
                                     </div>
                                 </div>
@@ -146,13 +146,13 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">โทรศัพท์บ้าน</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input class="form-control" type="text"  placeholder="เบอร์ติดต่อ" id="txt_tel" name="txt_tel" >
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">โทรศัพท์มือถือ</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="tel" class="form-control form-control-sm" id="exampleFormControlInput1"  required>
                                         </div>
                                     </div>
                                 </div>
@@ -160,7 +160,7 @@
                                     <div class="col-sm-12 col-md-12">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">Email</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1"  required>
                                         </div>
                                     </div>
                                 </div>
@@ -185,8 +185,11 @@
                     $zipcode: $('#zipcode'), // input ของรหัสไปรษณีย์
                 });
                 
+                $("#idcard").inputmask({"mask": "9-9999-99999-99-9"});
+                $("#txt_tel").inputmask({"mask": "999-999-9999"});
                 $("#confirm").click(function(){
-                    $("#myform").addClass("was-validated");
+                    alert($("#txt_tel").val().replace(/-/g, ''));
+                    // $("#myform").addClass("was-validated");
                 })
             });
         </script>

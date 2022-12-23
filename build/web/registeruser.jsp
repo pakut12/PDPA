@@ -32,7 +32,7 @@
                                     <div class="col-sm-12 col-md-12">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">รหัสบัตรประชาชน</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="text" class="form-control form-control-sm" id="idcard" placeholder="1-2345-67891-23-1"  required>
                                         </div>
                                     </div>
                                 </div>
@@ -58,7 +58,7 @@
                                             <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
                                         </div>
                                     </div>
-                                     <div class="col-sm-12 col-md-3">
+                                    <div class="col-sm-12 col-md-3">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">วันเดือนปีเกิด</label>
                                             <input type="date" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
@@ -104,7 +104,7 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">ซอย</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="text"  class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
@@ -146,13 +146,13 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">โทรศัพท์บ้าน</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input class="form-control" type="text"  placeholder="เบอร์ติดต่อ" id="txt_tel" name="txt_tel" >
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">โทรศัพท์มือถือ</label>
-                                            <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                            <input type="tel" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
                                         </div>
                                     </div>
                                 </div>
@@ -185,8 +185,11 @@
                     $zipcode: $('#zipcode'), // input ของรหัสไปรษณีย์
                 });
                 
+                $("#idcard").inputmask({"mask": "9-9999-99999-99-9"});
+                $("#txt_tel").inputmask({"mask": "999-999-9999"});
                 $("#confirm").click(function(){
-                    $("#myform").addClass("was-validated");
+                    alert($("#txt_tel").val().replace(/-/g, ''));
+                    // $("#myform").addClass("was-validated");
                 })
             });
         </script>
