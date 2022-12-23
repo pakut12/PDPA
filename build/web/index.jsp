@@ -12,7 +12,12 @@
     <head>
         <%@ include file = "share/header.jsp" %>
         <style>
-            
+            .box {
+                width: 120px;
+                height: 140px;
+                background-color: antiquewhite;
+                border: solid 4px darkcyan;
+            }
         </style>
     </head>
     <body>
@@ -29,38 +34,38 @@
         </script>
         <%            }
         %>
-        
-        <div class="container mt-3">
-            
-            <a href="index.jsp" ><img src="img/PDPA.jpg" class="img-fluid"></a>
-            
+        <div class="container mt-3" >
+            <div class="d-flex justify-content-between mb-5">
+                <div class=""><a href="index.jsp" ><img src="img/PDPA.jpg" class="img-fluid " style="height:15vh"></a></div>
+                <div class=""><img src="img/qrcode.jpg" class="img-fluid text-end" style="height:15vh"></div>
+            </div>
             <form method="post" action="Confirm" id="myform">
-                <div class="card shadow-lg col-sm-12 col-md-12 mx-auto border-primary" id="mycard">
-                    <div class="card-body " >
-                        <div class="h5 mb-3 text-center "><b>แนวปฏิบัติสําหรับลูกค้า คู่ค้าและผู้มาติดต่อภายนอก</b></div>
-                        <div class="overflow-hidden" style="height:50vh">
-                            <iframe src="https://drive.google.com/file/d/13bpe4Yibm_iDwME5r8ppTO_t0DMxZrGb/preview" style="width:100%; height:650px;" frameborder="1"></iframe>
-                        </div>
-                        <div class="d-flex justify-content-center mt-3">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="CheckPDPA" id="CheckPDPA1" value="true">
-                                <label class="form-check-label" for="inlineRadio1">ยอมรับ</label>
+                <div class="position-relative">
+                    
+                    <div class="card shadow-lg col-sm-12 col-md-12 mx-auto border-primary" id="mycard">
+                        <div class="card-body">
+                            <div class="overflow-hidden" style="height:43vh">
+                                <iframe src="https://drive.google.com/file/d/13bpe4Yibm_iDwME5r8ppTO_t0DMxZrGb/preview" style="width:100%; height:650px;" frameborder="1"></iframe>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="CheckPDPA" id="CheckPDPA2" value="false">
-                                <label class="form-check-label" for="inlineRadio2">ไม่ยอมรับ</label>
+                            <div class="d-flex justify-content-center mt-3">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="CheckPDPA" id="CheckPDPA1" value="true">
+                                    <label class="form-check-label" for="inlineRadio1">ยอมรับ</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="CheckPDPA" id="CheckPDPA2" value="false">
+                                    <label class="form-check-label" for="inlineRadio2">ไม่ยอมรับ</label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="text-center">
-                    <button class="btn btn-primary col-sm-12 col-md-1 mt-3" disabled type="submit" id="confirm" name="confirm">ยืนยัน</button>
+                    <div class="text-center">
+                        <button class="btn btn-primary  mt-3" disabled type="submit" id="confirm" name="confirm">ยืนยัน</button>
+                    </div>
                 </div>
                 <br>
             </form>
         </div>
-        
-        
         <script>
             function hover(){
                 $("#confirm").hover(function(){
@@ -77,11 +82,13 @@
                     $("#confirm").attr("disabled",true);
                 })
             }
-          
             $(document).ready(function(){
                 chack();
                 hover();
             })
         </script>
     </body>
+    <footer>
+        <%@ include file = "share/footer.jsp" %>
+    </footer>
 </html>

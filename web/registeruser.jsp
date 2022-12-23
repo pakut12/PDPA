@@ -37,26 +37,31 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-12 col-md-4">
+                                    <div class="col-sm-12 col-md-3">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">คำนำหน้า</label>
                                             <select class="form-select form-select-sm" required>
                                                 <option value=""></option>
                                                 <option value=""></option>
-                                                <option value=""></option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 col-md-4">
+                                    <div class="col-sm-12 col-md-3">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">ชื่อ</label>
                                             <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 col-md-4">
+                                    <div class="col-sm-12 col-md-3">
                                         <div class="mt-3">
                                             <label for="exampleFormControlInput1" class="form-label">นามสกุล</label>
                                             <input type="text" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
+                                        </div>
+                                    </div>
+                                     <div class="col-sm-12 col-md-3">
+                                        <div class="mt-3">
+                                            <label for="exampleFormControlInput1" class="form-label">วันเดือนปีเกิด</label>
+                                            <input type="date" class="form-control form-control-sm" id="exampleFormControlInput1" placeholder="name@example.com" required>
                                         </div>
                                     </div>
                                 </div>
@@ -74,6 +79,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="row">
                                     <div class="col-sm-12 col-md-4">
                                         <div class="mt-3">

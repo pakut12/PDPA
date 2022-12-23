@@ -4,6 +4,10 @@
  */
 package Servlet;
 
+import Utility.ConnectionSap;
+import Utility.ConnectionSap.*;
+import com.sap.mw.jco.IFunctionTemplate;
+import com.sap.mw.jco.JCO;
 import java.io.*;
 import java.net.*;
 
@@ -31,13 +35,23 @@ public class Confirm extends HttpServlet {
             String url = "";
            
             if (CheckPDPA.equals("true")) {
-                url = "/register.jsp";
+                url = "/registeruser.jsp";
                 request.setAttribute("status_confirm", "true");
             } else {
                 url = "/index.jsp";
                 request.setAttribute("status_confirm", "false");
             }
             getServletContext().getRequestDispatcher(url).forward(request, response);
+
+           /* ConnectionSap consap = new ConnectionSap();
+            JCO.Client client = consap.createClientDEV();
+            System.out.println(client);
+            JCO.Repository repository = new JCO.Repository("Myrep", client);
+            IFunctionTemplate ftemplate = repository.getFunctionTemplate("ZBAPI_BI_QI_DISPLAY");
+            System.out.println(ftemplate);
+            client.disconnect();
+            out.print(ftemplate);*/
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

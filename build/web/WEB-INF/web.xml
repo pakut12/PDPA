@@ -4,9 +4,17 @@
         <servlet-name>Confirm</servlet-name>
         <servlet-class>Servlet.Confirm</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>Servlet.Register</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Confirm</servlet-name>
         <url-pattern>/Confirm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/Register</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
