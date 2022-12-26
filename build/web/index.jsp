@@ -37,7 +37,7 @@
         <div class="container mt-3" >
             <div class="d-flex justify-content-between mb-5">
                 <div class=""><a href="index.jsp" ><img src="img/PDPA.jpg" class="img-fluid " style="height:15vh"></a></div>
-                <div class=""><img src="img/qrcode.jpg" class="img-fluid text-end" style="height:15vh"></div>
+                <div class=""><img src="img/qrcode1.jpg" class="img-fluid text-end" style="height:15vh"></div>
             </div>
             <form method="post" action="Confirm" id="myform">
                 <div class="position-relative">
@@ -50,11 +50,11 @@
                             <div class="d-flex justify-content-center mt-3">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="CheckPDPA" id="CheckPDPA1" value="true">
-                                    <label class="form-check-label" for="inlineRadio1">ยอมรับ</label>
+                                    <label class="form-check-label" for="CheckPDPA1">ยอมรับ</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="CheckPDPA" id="CheckPDPA2" value="false">
-                                    <label class="form-check-label" for="inlineRadio2">ไม่ยอมรับ</label>
+                                    <label class="form-check-label" for="CheckPDPA2">ไม่ยอมรับ</label>
                                 </div>
                             </div>
                         </div>
@@ -67,13 +67,6 @@
             </form>
         </div>
         <script>
-            function hover(){
-                $("#confirm").hover(function(){
-                    $("#confirm").addClass("animate__animated animate__pulse")
-                },function(){
-                    $("#confirm").removeClass("animate__animated animate__pulse")
-                })
-            }
             function chack(){
                 $("#CheckPDPA1").on('click', function() {
                     $("#confirm").attr("disabled",false);
@@ -84,7 +77,6 @@
             }
             $(document).ready(function(){
                 chack();
-                hover();
             })
         </script>
     </body>

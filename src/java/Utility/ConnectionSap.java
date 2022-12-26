@@ -20,8 +20,6 @@ public class ConnectionSap {
                 "EN", // language
                 "10.0.62.8",// host name
                 "00");
-
         return client;
-
     }
 }
