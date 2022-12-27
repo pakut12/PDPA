@@ -20,7 +20,7 @@ public class ConnectionDB {
 
             //4306
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:4306/test" +
+            con = DriverManager.getConnection("jdbc:mysql://localhost:4306/mydb" +
                     "?user=root&password=");
         } catch (Exception e) {
             e.printStackTrace();

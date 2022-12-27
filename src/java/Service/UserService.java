@@ -22,9 +22,18 @@ public class UserService {
     private static ResultSet rs;
 
     public static UserData SetDataUser(String[] data) {
+
+
         UserData datauser = new UserData();
+     
+        String homephone = "";
         try {
-            datauser.setIdcard(data[0].replaceAll("-", "").trim());
+            if (data.length == 19) {
+                homephone = "-";
+            } else {
+                homephone = data[16].replaceAll("-", "").replaceAll("_", "").trim();
+            }
+            datauser.setIdcard(data[0].replaceAll("-", "").replaceAll("_", "").trim());
             datauser.setPrefix(data[1].trim());
             datauser.setFirstname(data[2].trim());
             datauser.setSurname(data[3].trim());
@@ -40,11 +49,12 @@ public class UserService {
             datauser.setAmphoe(data[13].trim());
             datauser.setProvince(data[14].trim());
             datauser.setZipcode(data[15].trim());
-            datauser.setHomephone(data[16].replaceAll("-", "").trim());
-            datauser.setPhonenumber(data[17].replaceAll("-", "").trim());
+            datauser.setHomephone(data[16].replaceAll("-", "").replaceAll("_", "").trim());
+            datauser.setPhonenumber(data[18].replaceAll("-", "").replaceAll("_", "").trim());
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return datauser;
     }
 
@@ -53,12 +63,12 @@ public class UserService {
         try {
             String sql = "";
             conn = ConnectionDB.GetConnectionDB();
-            ps = conn.prepareStatement(sql);
+        //ps = conn.prepareStatement(sql);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             try {
-                ps.close();
+                // ps.close();
                 ConnectionDB.closeConnection(conn);
             } catch (SQLException e) {
                 e.printStackTrace();

@@ -4,10 +4,12 @@
  */
 package Servlet;
 
+import Model.UserData;
 import Service.UserService;
 import java.io.*;
 import java.net.*;
 
+import java.util.Map;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import org.json.JSONObject;
@@ -31,49 +33,68 @@ public class Register extends HttpServlet {
             try {
                 String type = request.getParameter("type").trim();
                 if (type.equals("register")) {
+                    JSONObject obj = new JSONObject();
+                    UserService user = new UserService();
+                    String status = "true";
                     try {
-                        String status = "";
-                        JSONObject obj = new JSONObject();
-                        String[] arrtxt = request.getParameterValues("dataform[]");
-                        UserService user = new UserService();
 
-                        String idcard = arrtxt[0].replaceAll("-", "").replaceAll("_", "").trim();
-                        String prefix = arrtxt[1].trim();
-                        String firstname = arrtxt[2].trim();
-                        String surname = arrtxt[3].trim();
-                        String birthday = arrtxt[4].trim();
-                        String age = arrtxt[5].trim();
-                        String email = arrtxt[6].trim();
-                        String village = arrtxt[7].trim();
-                        String number = arrtxt[8].trim();
-                        String group = arrtxt[9].trim();
-                        String alley = arrtxt[10].trim();
-                        String road = arrtxt[11].trim();
-                        String district = arrtxt[12].trim();
-                        String amphoe = arrtxt[13].trim();
-                        String province = arrtxt[14].trim();
-                        String zipcode = arrtxt[15].trim();
-                        String homephone = arrtxt[16].replaceAll("-", "").replaceAll("_", "").trim();
-                        String phonenumber = arrtxt[17].replaceAll("-", "").replaceAll("_", "").trim();
-                        
-                        if (homephone.equals("on")) {
-                            homephone = "-";
+                        Map<String, String[]> parameters = request.getParameterMap();
+
+                        for (Map.Entry<String, String[]> entry : parameters.entrySet()) {
+                            String key = entry.getKey();
+                            String[] values = entry.getValue();
+                            
+                            
                         }
-                        
-                        
-                        if (idcard.length() < 13) {
-                            status = "error_idcard";
-                        } else if (homephone.length() < 10) {
-                            status = "error_homephone";
-                        } else if (phonenumber.length() < 10) {
-                            status = "error_phonenumber";
-                        } else {
-                            status = "true";
-                        }
+
+//                        UserData datauser = user.SetDataUser(arrtxt);
+//                        boolean status_save = user.SaveDataUser(datauser);
+
+//
+//                        out.print(datauser.getIdcard() + "<br>");
+//                        out.print(datauser.getPrefix() + "<br>");
+//                        out.print(datauser.getFirstname() + "<br>");
+//                        out.print(datauser.getSurname() + "<br>");
+//                        out.print(datauser.getBirthday() + "<br>");
+//                        out.print(datauser.getAge() + "<br>");
+//                        out.print(datauser.getEmail() + "<br>");
+//                        out.print(datauser.getVillage() + "<br>");
+//                        out.print(datauser.getNumber() + "<br>");
+//                        out.print(datauser.getGroup() + "<br>");
+//                        out.print(datauser.getAlley() + "<br>");
+//                        out.print(datauser.getRoad() + "<br>");
+//                        out.print(datauser.getDistrict() + "<br>");
+//                        out.print(datauser.getAmphoe() + "<br>");
+//                        out.print(datauser.getProvince() + "<br>");
+//                        out.print(datauser.getZipcode() + "<br>");
+//                        out.print(datauser.getHomephone() + "<br>");
+//                        out.print(datauser.getPhonenumber() + "<br>");
+
+
+                        //  boolean status_save = user.SaveDataUser(datauser);
+//                        String idcard = arrtxt[0].replaceAll("-", "").replaceAll("_", "").trim();
+//                        String prefix = arrtxt[1].trim();
+//                        String firstname = arrtxt[2].trim();
+//                        String surname = arrtxt[3].trim();
+//                        String birthday = arrtxt[4].trim();
+//                        String age = arrtxt[5].trim();
+//                        String email = arrtxt[6].trim();
+//                        String village = arrtxt[7].trim();
+//                        String number = arrtxt[8].trim();
+//                        String group = arrtxt[9].trim();
+//                        String alley = arrtxt[10].trim();
+//                        String road = arrtxt[11].trim();
+//                        String district = arrtxt[12].trim();
+//                        String amphoe = arrtxt[13].trim();
+//                        String province = arrtxt[14].trim();
+//                        String zipcode = arrtxt[15].trim();
+//                        String homephone = arrtxt[16].replaceAll("-", "").replaceAll("_", "").trim();
+//                        String phonenumber = arrtxt[17].replaceAll("-", "").replaceAll("_", "").trim();
+//                        
+//                        
 
 
                         /*
-                        
                         out.print(prefix + "<br>");
                         out.print(firstname + "<br>");
                         out.print(surname + "<br>");
@@ -92,18 +113,9 @@ public class Register extends HttpServlet {
                         out.print(homephone + "<br>");
                         out.print(phonenumber + "<br>");
                          */
-
-
                         obj.put("status", status);
                         out.print(obj);
-
                     } catch (Exception e) {
-
-                        String status = "error_null";
-                        JSONObject obj = new JSONObject();
-                        obj.put("status", status);
-
-                        out.print(obj);
                         e.printStackTrace();
                     }
 

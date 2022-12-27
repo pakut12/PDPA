@@ -43,7 +43,7 @@
                                         <div class="mb-3">
                                             <label for="prefix" class="form-label" >คำนำหน้า</label>
                                             <select class="form-select form-select-sm" id="prefix" name="prefix" required>
-                                                <option value="" selected disabled>โปรดเลือก</option>
+                                                <option value="" selected  >โปรดเลือก</option>
                                                 <option value="นาย">นาย</option>
                                                 <option value="นาง">นาง</option>
                                                 <option value="นางสาว">นางสาว</option>
@@ -158,7 +158,7 @@
                                             <label for="homephone" class="form-label">โทรศัพท์บ้าน</label>
                                             <input class="form-control form-control-sm" type="text"  id="homephone" name="homephone" required>
                                             <div class="form-check d-flex justify-content-end mt-2 ">
-                                                <input class="form-check-input" type="checkbox" id="nohomephone" name="nohomephone">
+                                                <input class="form-check-input" type="checkbox" id="nohomephone" name="nohomephone" >
                                                 <label class="form-check-label mx-2" for="nohomephone">
                                                     ไม่มีโทรศัพท์บ้าน
                                                 </label>
@@ -190,9 +190,10 @@
             function nohomephone(){
                 $("#nohomephone").change(function(){
                     if ($(this).is(':checked')) {
-                        $('#homephone').prop('disabled', true);
+                        $('#homephone').val("");
+                        $('#homephone').prop('readonly', true);
                     }else{
-                        $('#homephone').prop('disabled', false);
+                        $('#homephone').prop('readonly', false);
                     } 
                 })
             }
@@ -208,70 +209,97 @@
                 //display the calculated age
                 $("#age").val(age);
             }
-            
+           
             function insertdata(){
+               
                 $("#myform").addClass("was-validated");
                 var data =  $("#myform").serializeArray();
                 var arr = [];
-                var status = "";
+                var status = 0;
+                var a = 0;
                 $.each(data,function(k,v){
+                    if(k != 16){
+                        if(v.value === ""){
+                            a++;
+                        }
+                    }
                     arr.push(v.value);
                 })
-                $.ajax({
-                    url:"Register",
-                    type:"post",
-                    data:{
-                        type:"register",
-                        dataform:arr
-                    },
-                    success:function(msg){
-                        
-                        console.log(msg);
-                        var statusjson = JSON.parse(msg);
-                  
-                        if(statusjson.status == "true"){
-                            Swal.fire({
-                                text:"บันทึกเรียบร้อย",
-                                title:"บันทึก",
-                                icon:"success"
-                            });
-                        }else if(statusjson.status == "error_idcard"){
-                            Swal.fire({
-                                text:"กรุณาใส่รหัสบัตรประชนให้ถูกต้อง",
-                                title:"ผิดพลาด",
-                                icon:"error"
-                            });
-                        }else if(statusjson.status == "error_homephone"){
-                            if (!$("#nohomephone").is(':checked')) {
+                
+                var statusall = a;
+                var statusidcard = $("#idcard").val().replaceAll("-", "").replaceAll("_", "").length;
+                var statushomephone = $("#homephone").val().replaceAll("-", "").replaceAll("_", "").length;
+                var statusphonenumber = $("#phonenumber").val().replaceAll("-", "").replaceAll("_", "").length;
+               
+                if(statusall > 0){
+                    Swal.fire({
+                        text:"กรุณากรอกข้อมูลให้ถูกต้อง",
+                        title:"ผิดพลาด",
+                        icon:"error"
+                    });
+                    status = 1
+                }else if(statusidcard < 13){
+                    Swal.fire({
+                        text:"กรุณากรอกข้อมูลรหัสบัตรประชาชนให้ถูกต้อง",
+                        title:"ผิดพลาด",
+                        icon:"error"
+                    });
+                    status = 2
+                }else if(!$("#nohomephone").is(':checked')){
+                    if (statushomephone < 10) {
+                        Swal.fire({
+                            text:"กรุณากรอกข้อมูลโทรศัพท์บ้านให้ถูกต้อง",
+                            title:"ผิดพลาด",
+                            icon:"error"
+                        });
+                        status = 3
+                    }
+                }else if(statusphonenumber < 10){
+                    Swal.fire({
+                        text:"กรุณากรอกข้อมูลโทรศัพท์มือถือให้ถูกต้อง",
+                        title:"ผิดพลาด",
+                        icon:"error"
+                    });
+                    status = 4
+                }
+                
+                console.log(status);
+                if(status == 0){                   
+                    $.ajax({
+                        url:"Register",
+                        type:"post",
+                        data:{
+                            type:"register",
+                            dataform:$("#myform").serializeArray()
+                        },
+                        success:function(msg){
+                            var jsdecode = JSON.parse(msg);
+                            if(jsdecode.status == "true"){
                                 Swal.fire({
-                                    text:"กรุณาใส่โทรศัพท์บ้านให้ถูกต้อง",
-                                    title:"ผิดพลาด",
+                                    text:"บันทึกสำเร็จ",
+                                    title:"บันทึก",
+                                    icon:"success"
+                                });
+                            }else if(jsdecode.status == "false"){
+                                Swal.fire({
+                                    text:"บันทึกไม่สำเร็จ",
+                                    title:"บันทึก",
                                     icon:"error"
                                 });
                             }
-                        }else if(statusjson.status == "error_phonenumber"){
+                        },
+                        error:function(){
                             Swal.fire({
-                                text:"กรุณาใส่โทรศัพท์มือถือให้ถูกต้อง",
-                                title:"ผิดพลาด",
-                                icon:"error"
-                            });
-                        }else if(statusjson.status == "error_null"){
-                            Swal.fire({
-                                text:"กรุณากรอกข้อมูลให้ครบถ้วน",
+                                text:"บันทึกไม่สำเร็จ",
                                 title:"ผิดพลาด",
                                 icon:"error"
                             });
                         }
-                    },
-                    error:function(){
-                        Swal.fire({
-                            text:"บันทึกไม่สำเร็จ",
-                            title:"ผิดพลาด",
-                            icon:"error"
-                        });
-                    }
-                })
+                    })
+                }
             }
+            
+
             $( document ).ready(function() {
                 $.Thailand({
                     $district: $('#district'), // input ของตำบล
@@ -279,13 +307,11 @@
                     $province: $('#province'), // input ของจังหวัด
                     $zipcode: $('#zipcode')// input ของรหัสไปรษณีย์
                 });
-               
                 nohomephone();
                 $("#idcard").inputmask({"mask": "9-9999-99999-99-9"});
                 $("#homephone").inputmask({"mask": "999-999-9999"});
                 $("#phonenumber").inputmask({"mask": "999-999-9999"});
                 $("#confirm").click(function(){
-                    // alert($("#txt_tel").val().replace(/-/g, ''));
                     insertdata();
                 })
                 $("#birthday").change(function(){
