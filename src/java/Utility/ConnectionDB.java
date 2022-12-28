@@ -17,16 +17,14 @@ public class ConnectionDB {
         try {
 //            Class.forName("oracle.jdbc.driver.OracleDriver");
 //            con = DriverManager.getConnection("jdbc:oracle:thin:@10.0.62.18:1521:stock", "comp", "pmoc4");
-
             //4306
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:4306/mydb" +
-                    "?user=root&password=");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:4306/mydb?useUnicode=true&characterEncoding=UTF-8" +
+                    "&user=root&password=");
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-
         return con;
     }
 

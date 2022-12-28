@@ -45,7 +45,7 @@
                     <div class="card shadow-lg col-sm-12 col-md-12 mx-auto border-primary" id="mycard">
                         <div class="card-body">
                             <div class="overflow-hidden" style="height:43vh">
-                                <iframe src="https://drive.google.com/file/d/13bpe4Yibm_iDwME5r8ppTO_t0DMxZrGb/preview" style="width:100%; height:650px;" frameborder="1"></iframe>
+                                <iframe src="https://drive.google.com/file/d/13bpe4Yibm_iDwME5r8ppTO_t0DMxZrGb/preview" style="width:100%; height:100%;" frameborder="1"></iframe>
                             </div>
                             <div class="d-flex justify-content-center mt-3">
                                 <div class="form-check form-check-inline">

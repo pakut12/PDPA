@@ -173,6 +173,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <input type="hidden" value="register" name="type" id="type">
                                 <br>
                             </div>
                         </div>
@@ -210,8 +211,8 @@
                 $("#age").val(age);
             }
            
-            function insertdata(){
-               
+            function insertdata(){   
+                
                 $("#myform").addClass("was-validated");
                 var data =  $("#myform").serializeArray();
                 var arr = [];
@@ -263,15 +264,11 @@
                     status = 4
                 }
                 
-                console.log(status);
                 if(status == 0){                   
                     $.ajax({
                         url:"Register",
                         type:"post",
-                        data:{
-                            type:"register",
-                            dataform:$("#myform").serializeArray()
-                        },
+                        data:$("#myform").serialize(),
                         success:function(msg){
                             var jsdecode = JSON.parse(msg);
                             if(jsdecode.status == "true"){
@@ -299,7 +296,6 @@
                 }
             }
             
-
             $( document ).ready(function() {
                 $.Thailand({
                     $district: $('#district'), // input ของตำบล
