@@ -30,10 +30,11 @@ public class Confirm extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
+
             request.setCharacterEncoding("utf8");
             String CheckPDPA = request.getParameter("CheckPDPA");
             String url = "";
-           
+
             if (CheckPDPA.equals("true")) {
                 url = "/registeruser.jsp";
                 request.setAttribute("status_confirm", "true");
@@ -43,14 +44,17 @@ public class Confirm extends HttpServlet {
             }
             getServletContext().getRequestDispatcher(url).forward(request, response);
 
-           /* ConnectionSap consap = new ConnectionSap();
-            JCO.Client client = consap.createClientDEV();
-            System.out.println(client);
-            JCO.Repository repository = new JCO.Repository("Myrep", client);
-            IFunctionTemplate ftemplate = repository.getFunctionTemplate("ZBAPI_BI_QI_DISPLAY");
-            System.out.println(ftemplate);
-            client.disconnect();
-            out.print(ftemplate);*/
+
+
+//            ConnectionSap consap = new ConnectionSap();
+//            JCO.Client client = consap.createClientDEV();
+//            System.out.println(client);
+//            JCO.Repository repository = new JCO.Repository("Myrep", client);
+//            IFunctionTemplate ftemplate = repository.getFunctionTemplate("ZBAPI_BI_QI_DISPLAY");
+//            System.out.println(ftemplate);
+//            client.disconnect();
+//            out.print(ftemplate);
+
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -20,6 +20,8 @@ public class ConnectionSap {
                 "EN", // language
                 "10.0.62.8",// host name
                 "00");
+
+       //JCO.Client client = JCO.createClient("000", "testpg", "testpg01", "EN", "202.183.155.130:10443","00");
         return client;
     }
 }
