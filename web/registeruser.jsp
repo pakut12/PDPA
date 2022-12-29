@@ -11,7 +11,6 @@
 <html>
     <head>
         <%@ include file = "share/header.jsp" %>
-        
     </head>
     <body>
         <%
@@ -21,8 +20,6 @@
                 getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
             }
         %>
-        
-         
         <div class="container mt-3">
             <div class="text-center h2 mb-3 text-primary"><b>PDPA</b></div>
             <form method="post" action="" id="myform">
@@ -34,9 +31,10 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-12 col-md-3">
+                                        
                                         <div class="mb-3">
                                             <label for="idcard" class="form-label">รหัสบัตรประชาชน</label>
-                                            <input type="text" class="form-control form-control-sm" id="idcard" name="idcard" required>
+                                            <input type="text" class="form-control form-control-sm " id="idcard" name="idcard" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-3">
@@ -224,6 +222,7 @@
                             a++;
                         }
                     }
+                    console.log(data);
                     arr.push(v.value);
                 })
                 
@@ -233,6 +232,7 @@
                 var statusphonenumber = $("#phonenumber").val().replaceAll("-", "").replaceAll("_", "").length;
                
                 if(statusall > 0){
+                    
                     Swal.fire({
                         text:"กรุณากรอกข้อมูลให้ถูกต้อง",
                         title:"ผิดพลาด",
@@ -240,6 +240,9 @@
                     });
                     status = 1
                 }else if(statusidcard < 13){
+                    $("#idcard").removeClass("form-control.is-valid");
+                    $("#idcard").removeClass("was-validated .form-control:valid");
+                    
                     Swal.fire({
                         text:"กรุณากรอกข้อมูลรหัสบัตรประชาชนให้ถูกต้อง",
                         title:"ผิดพลาด",
@@ -247,6 +250,7 @@
                     });
                     status = 2
                 }else if(!$("#nohomephone").is(':checked')){
+                    $("#homephone").addClass("is-invalid");
                     if (statushomephone < 10) {
                         Swal.fire({
                             text:"กรุณากรอกข้อมูลโทรศัพท์บ้านให้ถูกต้อง",
@@ -256,6 +260,7 @@
                         status = 3
                     }
                 }else if(statusphonenumber < 10){
+                    $("#phonenumber").addClass("is-invalid");
                     Swal.fire({
                         text:"กรุณากรอกข้อมูลโทรศัพท์มือถือให้ถูกต้อง",
                         title:"ผิดพลาด",
@@ -264,12 +269,17 @@
                     status = 4
                 }
                 
-                if(status == 0){                   
+                if(status == 0){  
+                    $("#idcard").removeClass("is-invalid");
+                    $("#homephone").removeClass("is-invalid");
+                    $("#phonenumber").removeClass("is-invalid");
+        
                     $.ajax({
                         url:"Register",
                         type:"post",
                         data:$("#myform").serialize(),
                         success:function(msg){
+                           
                             var jsdecode = JSON.parse(msg);
                             if(jsdecode.status == "true"){
                                 Swal.fire({

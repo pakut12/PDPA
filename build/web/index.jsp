@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <div id="bt_send"> <button class="btn btn-primary  mt-3"  type="submit" id="confirm" name="confirm">ยืนยัน</button></div>
+                        <div id="bt_send"> <button class="btn btn-primary  mt-3" disabled type="submit" id="confirm" name="confirm">ยืนยัน</button></div>
                     </div>
                 </div>
                 <br>
@@ -69,10 +69,12 @@
         <script>
             function chack(){
                 $("#CheckPDPA1").on('click', function() {
+                    $("#confirm").attr("disabled",false);
                     $("#bt_send").empty();
                     $("#bt_send").html('<button class="btn btn-primary  mt-3"  type="submit" id="confirm" name="confirm">ยืนยัน</button>');
                 })
                 $("#CheckPDPA2").on('click', function() {
+                    $("#confirm").attr("disabled",false);
                     $("#bt_send").empty();
                     $("#bt_send").html('<a href="http://www.pg.co.th/webpg/app/front/news/home.php?lang=en&"><button class="btn btn-primary mt-3" type="button" id="confirm" name="confirm">ยืนยัน</button></a>');
                 })
