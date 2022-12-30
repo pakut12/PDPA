@@ -34,14 +34,14 @@
                                         
                                         <div class="mb-3">
                                             <label for="idcard" class="form-label">รหัสบัตรประชาชน</label>
-                                            <input type="text" class="form-control form-control-sm " id="idcard" name="idcard" required>
+                                            <input type="text" class="form-control form-control-sm " id="idcard" name="idcard" pattern="\d{1}-\d{4}-\d{5}-\d{2}-\d{1}" required>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-3">
                                         <div class="mb-3">
                                             <label for="prefix" class="form-label" >คำนำหน้า</label>
                                             <select class="form-select form-select-sm" id="prefix" name="prefix" required>
-                                                <option value="" selected  >โปรดเลือก</option>
+                                                <option selected disabled value="" >โปรดเลือก</option>
                                                 <option value="นาย">นาย</option>
                                                 <option value="นาง">นาง</option>
                                                 <option value="นางสาว">นางสาว</option>
@@ -154,9 +154,9 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="mb-3">
                                             <label for="homephone" class="form-label">โทรศัพท์บ้าน</label>
-                                            <input class="form-control form-control-sm" type="text"  id="homephone" name="homephone" required>
+                                            <input class="form-control form-control-sm" type="text"  id="homephone" name="homephone" pattern="\d{3}-\d{3}-\d{4}" required>
                                             <div class="form-check d-flex justify-content-end mt-2 ">
-                                                <input class="form-check-input" type="checkbox" id="nohomephone" name="nohomephone" >
+                                                <input class="form-check-input" type="checkbox" id="nohomephone" name="nohomephone"  >
                                                 <label class="form-check-label mx-2" for="nohomephone">
                                                     ไม่มีโทรศัพท์บ้าน
                                                 </label>
@@ -167,7 +167,7 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">โทรศัพท์มือถือ</label>
-                                            <input type="tel" class="form-control form-control-sm" id="phonenumber" name="phonenumber"  required>
+                                            <input type="tel" class="form-control form-control-sm" id="phonenumber" name="phonenumber" pattern="\d{3}-\d{3}-\d{4}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -232,7 +232,6 @@
                 var statusphonenumber = $("#phonenumber").val().replaceAll("-", "").replaceAll("_", "").length;
                
                 if(statusall > 0){
-                    
                     Swal.fire({
                         text:"กรุณากรอกข้อมูลให้ถูกต้อง",
                         title:"ผิดพลาด",
@@ -240,29 +239,24 @@
                     });
                     status = 1
                 }else if(statusidcard < 13){
-                    $("#idcard").removeClass("form-control.is-valid");
-                    $("#idcard").removeClass("was-validated .form-control:valid");
-                    
                     Swal.fire({
-                        text:"กรุณากรอกข้อมูลรหัสบัตรประชาชนให้ถูกต้อง",
+                        text:"กรุณากรอกข้อมูลให้ถูกต้อง",
                         title:"ผิดพลาด",
                         icon:"error"
                     });
                     status = 2
                 }else if(!$("#nohomephone").is(':checked')){
-                    $("#homephone").addClass("is-invalid");
                     if (statushomephone < 10) {
                         Swal.fire({
-                            text:"กรุณากรอกข้อมูลโทรศัพท์บ้านให้ถูกต้อง",
+                            text:"กรุณากรอกข้อมูลให้ถูกต้อง",
                             title:"ผิดพลาด",
                             icon:"error"
                         });
                         status = 3
                     }
                 }else if(statusphonenumber < 10){
-                    $("#phonenumber").addClass("is-invalid");
                     Swal.fire({
-                        text:"กรุณากรอกข้อมูลโทรศัพท์มือถือให้ถูกต้อง",
+                        text:"กรุณากรอกข้อมูลให้ถูกต้อง",
                         title:"ผิดพลาด",
                         icon:"error"
                     });
@@ -270,16 +264,11 @@
                 }
                 
                 if(status == 0){  
-                    $("#idcard").removeClass("is-invalid");
-                    $("#homephone").removeClass("is-invalid");
-                    $("#phonenumber").removeClass("is-invalid");
-        
                     $.ajax({
                         url:"Register",
                         type:"post",
                         data:$("#myform").serialize(),
                         success:function(msg){
-                           
                             var jsdecode = JSON.parse(msg);
                             if(jsdecode.status == "true"){
                                 Swal.fire({
