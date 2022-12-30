@@ -26,19 +26,27 @@
     <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
     <link rel="stylesheet" href="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.css">
     <script type="text/javascript" src="https://earthchie.github.io/jquery.Thailand.js/jquery.Thailand.js/dist/jquery.Thailand.min.js"></script>
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js" integrity="sha512-jTgBq4+dMYh73dquskmUFEgMY5mptcbqSw2rmhOZZSJjZbD2wMt0H5nhqWtleVkyBEjmzid5nyERPSNBafG4GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <style>
         body{
-            
             background: url('https://bpbd.pangkalpinangkota.go.id/assets/svg/components/bg-elements-2.svg') no-repeat center center fixed; 
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover; 
-            
             font-family: 'Krub', sans-serif;
+        }
+        ::-webkit-scrollbar {
+            width: .45rem;
+            
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(13, 110, 253, .4);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-track{
+            background: transparent;
         }
     </style>
 </html>

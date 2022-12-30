@@ -99,7 +99,7 @@ public class UserService {
         int lastprimarykey = 0;
 
         try {
-            String sql = "SELECT MAX(user_id) lastprimary FROM `tb_usermaster`;";
+            String sql = "SELECT MAX(user_id) as lastprimary FROM `tb_usermaster`";
             conn = ConnectionDB.GetConnectionDB();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();

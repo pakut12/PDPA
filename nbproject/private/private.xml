@@ -2,8 +2,8 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/C:/Users/pakutsing/Desktop/Github/PDPA/src/java/Servlet/Confirm.java</file>
-        <file>file:/C:/Users/pakutsing/Desktop/Github/PDPA/src/java/Servlet/Register.java</file>
+        <file>file:/C:/Users/pakutsing/Desktop/Github/PDPA/src/java/Model/UserData.java</file>
+        <file>file:/C:/Users/pakutsing/Desktop/Github/PDPA/src/java/Service/UserService.java</file>
         <file>file:/C:/Users/pakutsing/Desktop/Github/PDPA/web/index.jsp</file>
         <file>file:/C:/Users/pakutsing/Desktop/Github/PDPA/web/registeruser.jsp</file>
     </open-files>

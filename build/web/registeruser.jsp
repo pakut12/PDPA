@@ -21,7 +21,7 @@
             }
         %>
         <div class="container mt-3">
-            <div class="text-center h2 mb-3 text-primary"><b>PDPA</b></div>
+            <div class="text-center h1 mb-3 text-primary"><b>PDPA</b></div>
             <form method="post" action="" id="myform">
                 <div class="card shadow-lg col-sm-12 col-md-10 mx-auto border-primary "  id="mycard">
                     <div class="row">
@@ -35,6 +35,7 @@
                                         <div class="mb-3">
                                             <label for="idcard" class="form-label">รหัสบัตรประชาชน</label>
                                             <input type="text" class="form-control form-control-sm " id="idcard" name="idcard" pattern="\d{1}-\d{4}-\d{5}-\d{2}-\d{1}" required>
+                                           
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-3">
@@ -210,7 +211,6 @@
             }
            
             function insertdata(){   
-                
                 $("#myform").addClass("was-validated");
                 var data =  $("#myform").serializeArray();
                 var arr = [];
@@ -225,7 +225,6 @@
                     console.log(data);
                     arr.push(v.value);
                 })
-                
                 var statusall = a;
                 var statusidcard = $("#idcard").val().replaceAll("-", "").replaceAll("_", "").length;
                 var statushomephone = $("#homephone").val().replaceAll("-", "").replaceAll("_", "").length;
