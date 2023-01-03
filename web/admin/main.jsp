@@ -13,22 +13,15 @@
         <%@ include file = "share/header.jsp" %>
     </head>
     <body>
+        <%@ include file = "share/navbar.jsp" %>
         <div class="container">
-            <div class="card mt-5 shadow col-sm-12 col-md-6 mx-auto">
-                <div class="card-header">
-                    Admin login 
-                </div>
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label for="Username" class="form-label">Username : </label>
-                        <input type="text" class="form-control form-control-sm" id="Username" placeholder="Username">
-                    </div>
-                    <div class="mb-3">
-                        <label for="Password" class="form-label">Password : </label>
-                        <input type="password" class="form-control form-control-sm" id="Password" placeholder="Password">
-                    </div>
-                    <div class="mb-3 text-center">
-                        <button class="btn btn-sm btn-primary " type="button" id="login">Login</button>
+            <div class="row mt-5">
+                <div class="col-md-12 col-sm-12">
+                    <div class="card text-white bg-primary mb-3">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">
+                           
+                        </div>
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:4306
--- Generation Time: Dec 28, 2022 at 07:19 AM
+-- Generation Time: Jan 03, 2023 at 10:46 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -29,17 +29,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tb_address` (
   `address_id` int(11) NOT NULL,
-  `address_village` varchar(100) NOT NULL,
-  `address_number` varchar(100) NOT NULL,
-  `address_alley` varchar(100) NOT NULL,
-  `address_group` varchar(100) NOT NULL,
-  `address_road` varchar(100) NOT NULL,
-  `address_district` varchar(100) NOT NULL,
-  `address_amphoe` varchar(100) NOT NULL,
-  `address_province` varchar(100) NOT NULL,
-  `address_zipcode` varchar(100) NOT NULL,
-  `address_homephone` varchar(100) NOT NULL,
-  `address_phonenumber` varchar(100) NOT NULL
+  `address_village` varchar(100) DEFAULT NULL,
+  `address_number` varchar(100) DEFAULT NULL,
+  `address_alley` varchar(100) DEFAULT NULL,
+  `address_group` varchar(100) DEFAULT NULL,
+  `address_road` varchar(100) DEFAULT NULL,
+  `address_district` varchar(100) DEFAULT NULL,
+  `address_amphoe` varchar(100) DEFAULT NULL,
+  `address_province` varchar(100) DEFAULT NULL,
+  `address_zipcode` varchar(100) DEFAULT NULL,
+  `address_homephone` varchar(100) DEFAULT NULL,
+  `address_phonenumber` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -52,18 +52,37 @@ INSERT INTO `tb_address` (`address_id`, `address_village`, `address_number`, `ad
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_admin`
+--
+
+CREATE TABLE `tb_admin` (
+  `admin_id` int(11) NOT NULL,
+  `admin_user` varchar(20) NOT NULL,
+  `admin_pass` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_admin`
+--
+
+INSERT INTO `tb_admin` (`admin_id`, `admin_user`, `admin_pass`) VALUES
+(99, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_user`
 --
 
 CREATE TABLE `tb_user` (
   `user_id` int(11) NOT NULL,
   `user_idcard` varchar(13) NOT NULL,
-  `user_prefix` varchar(10) NOT NULL,
-  `user_firstname` varchar(100) NOT NULL,
-  `user_surname` varchar(100) NOT NULL,
-  `user_birthday` date NOT NULL,
-  `user_age` varchar(3) NOT NULL,
-  `user_email` varchar(50) NOT NULL
+  `user_prefix` varchar(10) DEFAULT NULL,
+  `user_firstname` varchar(100) DEFAULT NULL,
+  `user_surname` varchar(100) DEFAULT NULL,
+  `user_birthday` date DEFAULT NULL,
+  `user_age` varchar(3) DEFAULT NULL,
+  `user_email` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -103,6 +122,12 @@ ALTER TABLE `tb_address`
   ADD PRIMARY KEY (`address_id`);
 
 --
+-- Indexes for table `tb_admin`
+--
+ALTER TABLE `tb_admin`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
 -- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
@@ -112,7 +137,8 @@ ALTER TABLE `tb_user`
 -- Indexes for table `tb_usermaster`
 --
 ALTER TABLE `tb_usermaster`
-  ADD PRIMARY KEY (`usermaster_id`);
+  ADD PRIMARY KEY (`usermaster_id`),
+  ADD KEY `user_id` (`user_id`,`address_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -55,6 +55,10 @@
                                     text:"Login Success",
                                     title:"Login"
                                 })
+                                
+                                setTimeout(function(){
+                                    window.location.replace("main.jsp");
+                                }, 1000);
                             }else if(jsdecode.status == "false"){
                                 Swal.fire({
                                     icon:"error",
