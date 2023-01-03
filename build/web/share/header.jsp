@@ -38,8 +38,7 @@
             font-family: 'Krub', sans-serif;
         }
         ::-webkit-scrollbar {
-            width: .45rem;
-            
+            width: .45rem;  
         }
         ::-webkit-scrollbar-thumb {
             background-color: rgba(13, 110, 253, .4);
@@ -47,6 +46,10 @@
         }
         ::-webkit-scrollbar-track{
             background: transparent;
+        }
+        
+        .container{
+            min-height:"100vh";
         }
     </style>
 </html>

@@ -29,6 +29,28 @@ public class UserData {
     private String homephone;
     private String phonenumber;
 
+    public UserData(String idcard, String prefix, String firstname, String surname, String birthday, String age, String email, String village, String number, String group, String alley, String road, String district, String amphoe, String province, String zipcode, String homephone, String phonenumber) {
+        this.idcard = idcard;
+        this.prefix = prefix;
+        this.firstname = firstname;
+        this.surname = surname;
+        this.birthday = birthday;
+        this.age = age;
+        this.email = email;
+        this.village = village;
+        this.number = number;
+        this.group = group;
+        this.alley = alley;
+        this.road = road;
+        this.district = district;
+        this.amphoe = amphoe;
+        this.province = province;
+        this.zipcode = zipcode;
+        this.homephone = homephone;
+        this.phonenumber = phonenumber;
+    }
+
+  
     public UserData() {
         super();
     }

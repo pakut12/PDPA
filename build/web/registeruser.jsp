@@ -35,7 +35,7 @@
                                         <div class="mb-3">
                                             <label for="idcard" class="form-label">รหัสบัตรประชาชน</label>
                                             <input type="text" class="form-control form-control-sm " id="idcard" name="idcard" pattern="\d{1}-\d{4}-\d{5}-\d{2}-\d{1}" required>
-                                           
+                                            
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-3">
@@ -186,6 +186,9 @@
                 <br>
             </form>
         </div>
+        <footer>
+            <%@ include file = "share/footer.jsp" %>
+        </footer>
         <script>
             function nohomephone(){
                 $("#nohomephone").change(function(){
@@ -197,18 +200,60 @@
                     } 
                 })
             }
-            function calculateage(date){
-                var d = date.split("-");
-                var dob = new Date(d[1] + '/' + d[2] + '/' + d[0]);
-                var today = new Date();
-                var dd = String(today.getDate()).padStart(2, '0');
-                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-                var yyyy = today.getFullYear();
-                //now calculate the age of the user
-                var age = Math.abs(yyyy - d[0]);
-                //display the calculated age
-                $("#age").val(age);
-            }
+            function calcAge(date, month, year) {
+                month = month - 1;
+                year = year - 543;
+
+                today = new Date();
+                dateStr = today.getDate();
+                monthStr = today.getMonth();
+                yearStr = today.getFullYear();
+
+                theYear = yearStr - year;
+                theMonth = monthStr - month;
+                theDate = dateStr - date;
+
+                var days = "";
+                if (monthStr == 0 || monthStr == 2 || monthStr == 4 || monthStr == 6 || monthStr == 7 || monthStr == 9 || monthStr == 11) days = 31;
+                if (monthStr == 3 || monthStr == 5 || monthStr == 8 || monthStr == 10) days = 30;
+                if (monthStr == 1) days = 28;
+
+                inYears = theYear;
+
+                if (month < monthStr && date > dateStr) {
+                    inYears = parseInt(inYears) + 1;
+                    inMonths = theMonth - 1;
+                };
+    
+                if (month < monthStr && date <= dateStr) {
+                    inMonths = theMonth;
+                } else if (month == monthStr && (date < dateStr || date == dateStr)) {
+                    inMonths = 0;
+                } else if (month == monthStr && date > dateStr) {
+                    inMonths = 11;
+                } else if (month > monthStr && date <= dateStr) {
+                    inYears = inYears - 1;
+                    inMonths = ((12 - -(theMonth)) + 1);
+                } else if (month > monthStr && date > dateStr) {
+                    inMonths = ((12 - -(theMonth)));
+                };
+    
+                if (date < dateStr) {
+                    inDays = theDate;
+                } else if (date == dateStr) {
+                    inDays = 0;
+                } else {
+                    inYears = inYears - 1;
+                    inDays = days - (-(theDate));
+                };
+    
+                var result = ['day', 'month', 'year'];
+                result.day = inDays;
+                result.month = inMonths;
+                result.year = inYears;
+    
+                return result;
+            };
            
             function insertdata(){   
                 $("#myform").addClass("was-validated");
@@ -307,10 +352,12 @@
                 $("#phonenumber").inputmask({"mask": "999-999-9999"});
                 $("#confirm").click(function(){
                     insertdata();
-                })
+                }) 
                 $("#birthday").change(function(){
-                    calculateage($("#birthday").val());
+                    var age = calcAge(19, 10, 2542);
+                    $("#age").val(age.year);
                 })
+                 
             });
             
         </script>

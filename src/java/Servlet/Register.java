@@ -39,6 +39,9 @@ public class Register extends HttpServlet {
                     JSONObject obj = new JSONObject();
                     String status = null;
                     try {
+                        String home = request.getParameter("homephone").trim();
+
+                        out.print(home);
 
                         UserData datauser = new UserData();
                         datauser.setIdcard(request.getParameter("idcard").replaceAll("-", "").replaceAll("_", "").trim());

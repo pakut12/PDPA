@@ -8,6 +8,10 @@
         <servlet-name>Register</servlet-name>
         <servlet-class>Servlet.Register</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Admin</servlet-name>
+        <servlet-class>Servlet.Admin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Confirm</servlet-name>
         <url-pattern>/Confirm</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Admin</servlet-name>
+        <url-pattern>/Admin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

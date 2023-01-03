@@ -22,8 +22,6 @@ public class UserService {
     private static ResultSet rs;
 
     public static UserData SetDataUser(String[] data) {
-
-
         UserData datauser = new UserData();
 
         String homephone = "";
