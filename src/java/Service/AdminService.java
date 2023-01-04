@@ -32,6 +32,31 @@ public class AdminService {
         return digestpass;
     }
 
+    private static int getlastprimarykey() {
+        int lastprimarykey = 0;
+
+        try {
+            String sql = "SELECT MAX(admin_id) as lastprimary FROM `tb_admin`";
+            conn = ConnectionDB.GetConnectionDB();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                lastprimarykey = (rs.getInt("lastprimary") + 1);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                ps.close();
+                ConnectionDB.closeConnection(conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return lastprimarykey;
+    }
+
     public static List<UserData> AdminGetUser() {
         List<UserData> datauser = new ArrayList<UserData>();
         try {
@@ -78,21 +103,23 @@ public class AdminService {
         return datauser;
     }
 
-    public static AdminDetail AdminDetailAll() {
-        List<AdminDetail> listadmin = new ArrayList<AdminDetail>();
+    public static Boolean AddAdmin(AdminDetail admin) {
+        boolean status = false;
+        int lastprimarykey = getlastprimarykey();
         try {
             int Chack = 0;
-            String sql = "SELECT * FROM `tb_admin` WHERE admin_user = ? and admin_pass = ?";
+            String sql = "INSERT INTO `tb_admin` (`admin_id`, `admin_user`, `admin_pass`, `admin_name`) VALUES (?, ?, ?, ?)";
             conn = ConnectionDB.GetConnectionDB();
             ps = conn.prepareStatement(sql);
+            ps.setInt(1, lastprimarykey);
+            ps.setString(2, admin.getAdmin_user());
+            ps.setString(3, CoverToMD5(admin.getAdmin_pass()));
+            ps.setString(4, admin.getAdmin_name());
 
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                AdminDetail admindetail = new AdminDetail();
-                admindetail.setAdmin_id(rs.getString("admin_id"));
-                admindetail.setAdmin_pass(rs.getString("admin_pass"));
-                admindetail.setAdmin_user(rs.getString("admin_user"));
-                admindetail.setAdmin_name(rs.getString("admin_name"));
+            if (ps.executeUpdate() > 0) {
+                status = true;
+            } else {
+                status = false;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -105,7 +132,37 @@ public class AdminService {
                 e.printStackTrace();
             }
         }
-        return (AdminDetail) listadmin;
+        return status;
+    }
+
+    public static List<AdminDetail> AdminDetailAll() {
+        List<AdminDetail> listadmin = new ArrayList<AdminDetail>();
+        try {
+            int Chack = 0;
+            String sql = "SELECT * FROM `tb_admin`";
+            conn = ConnectionDB.GetConnectionDB();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                AdminDetail admindetail = new AdminDetail();
+                admindetail.setAdmin_id(rs.getString("admin_id"));
+                admindetail.setAdmin_pass(rs.getString("admin_pass"));
+                admindetail.setAdmin_user(rs.getString("admin_user"));
+                admindetail.setAdmin_name(rs.getString("admin_name"));
+                listadmin.add(admindetail);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                rs.close();
+                ps.close();
+                ConnectionDB.closeConnection(conn);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return listadmin;
     }
 
     public static AdminDetail Admindetail(String user, String pass) {

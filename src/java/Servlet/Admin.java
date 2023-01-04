@@ -121,6 +121,47 @@ public class Admin extends HttpServlet {
             } else if (type.equals("logout")) {
                 session.invalidate();
                 response.sendRedirect("admin/index.jsp");
+            } else if (type.equals("getdataadmin")) {
+                AdminService ads = new AdminService();
+                List<AdminDetail> listdata = ads.AdminDetailAll();
+
+                String html = "";
+                html += "<table class='table table-bordered table-sm text-nowrap text-center w-100' id='mytable'>";
+                html += "<thead>";
+                html += "<tr>";
+                html += "<th>No</th>";
+                html += "<th>ID</th>";
+                html += "<th>Name</th>";
+                html += "</tr>";
+                html += "</thead>";
+                html += "<tbody>";
+
+                for (int n = 0; n < listdata.size(); n++) {
+                    html += "<tr>";
+                    html += "<td>" + (n + 1) + "</td>";
+                    html += "<td>" + listdata.get(n).getAdmin_id() + "</td>";
+                    html += "<td>" + listdata.get(n).getAdmin_name() + "</td>";
+                    html += "</tr>";
+                }
+
+                html += "</tbody>";
+                html += "</table>";
+
+                out.print(html);
+            } else if (type.equals("addadmin")) {
+                AdminDetail admin = new AdminDetail();
+                admin.setAdmin_user(request.getParameter("user"));
+                admin.setAdmin_pass(request.getParameter("pass"));
+                admin.setAdmin_name(request.getParameter("name"));
+                
+                AdminService ads = new AdminService();
+                Boolean status_add = ads.AddAdmin(admin);
+                if (status_add) {
+                    obj.put("status", "true");
+                } else {
+                    obj.put("status", "false");
+                }
+                out.print(obj);
 
             }
         } finally {

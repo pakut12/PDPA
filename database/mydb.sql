@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:4306
--- Generation Time: Jan 03, 2023 at 10:46 AM
+-- Generation Time: Jan 04, 2023 at 10:56 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -47,7 +47,9 @@ CREATE TABLE `tb_address` (
 --
 
 INSERT INTO `tb_address` (`address_id`, `address_village`, `address_number`, `address_alley`, `address_group`, `address_road`, `address_district`, `address_amphoe`, `address_province`, `address_zipcode`, `address_homephone`, `address_phonenumber`) VALUES
-(99, '-', '-', '', '', '-', '-', '-', '-', '-', '-', '-');
+(99, '-', '-', '', '', '-', '-', '-', '-', '-', '-', '-'),
+(100, '-', '717/303', '-', 'วัดจันทร์ใน', 'เจริญกรุง107', 'บางโคล่', 'บางคอแหลม', 'กรุงเทพมหานคร', '10120', '', '0810702490'),
+(101, '-', '717/303', '-', 'วัดจันทร์ใน', 'เจริญกรุง107', 'บางโคล่', 'บางคอแหลม', 'กรุงเทพมหานคร', '10120', '', '0810702490');
 
 -- --------------------------------------------------------
 
@@ -57,16 +59,17 @@ INSERT INTO `tb_address` (`address_id`, `address_village`, `address_number`, `ad
 
 CREATE TABLE `tb_admin` (
   `admin_id` int(11) NOT NULL,
-  `admin_user` varchar(20) NOT NULL,
-  `admin_pass` varchar(20) NOT NULL
+  `admin_user` varchar(32) NOT NULL,
+  `admin_pass` varchar(32) NOT NULL,
+  `admin_name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_admin`
 --
 
-INSERT INTO `tb_admin` (`admin_id`, `admin_user`, `admin_pass`) VALUES
-(99, 'admin', 'admin');
+INSERT INTO `tb_admin` (`admin_id`, `admin_user`, `admin_pass`, `admin_name`) VALUES
+(99, 'admin', '21232F297A57A5A743894A0E4A801FC3', 'admin');
 
 -- --------------------------------------------------------
 
@@ -90,7 +93,9 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`user_id`, `user_idcard`, `user_prefix`, `user_firstname`, `user_surname`, `user_birthday`, `user_age`, `user_email`) VALUES
-(99, '-', '-', '0', '0', '0000-00-00', '0', '0');
+(99, '-', '-', '0', '0', NULL, '0', '0'),
+(100, '1349901006690', 'นาย', 'ปากัต ซิงห์', 'จาวาลา', '1999-10-19', '23', 'pakut013@gmail.com'),
+(101, '1349901006690', 'นาย', 'ปากัต ซิงห์', 'จาวาลา', '1999-10-19', '23', 'pakut013@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -109,7 +114,9 @@ CREATE TABLE `tb_usermaster` (
 --
 
 INSERT INTO `tb_usermaster` (`usermaster_id`, `user_id`, `address_id`) VALUES
-(99, 99, 99);
+(99, 99, 99),
+(100, 100, 100),
+(101, 101, 101);
 
 --
 -- Indexes for dumped tables

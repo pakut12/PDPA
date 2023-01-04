@@ -14,7 +14,7 @@
                     <a class="nav-link " aria-current="page" href="managedatauser.jsp" id="managedatauser"><i class="bi bi-people"></i> ManageDataUser</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="manageadmin.jsp" id="manageadmin"><i class="bi bi-people"></i> ManageAdmin</a>
+                    <a class="nav-link " aria-current="page" href="manageadmin.jsp" id="manageadmin"><i class="bi bi-people-fill"></i> ManageAdmin</a>
                 </li>
             </ul>
             <div class="d-flex">

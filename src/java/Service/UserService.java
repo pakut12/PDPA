@@ -95,7 +95,6 @@ public class UserService {
 
     private static int getlastprimarykey() {
         int lastprimarykey = 0;
-
         try {
             String sql = "SELECT MAX(user_id) as lastprimary FROM `tb_usermaster`";
             conn = ConnectionDB.GetConnectionDB();
