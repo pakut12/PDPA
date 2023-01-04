@@ -41,8 +41,6 @@ public class Register extends HttpServlet {
                     try {
                         String home = request.getParameter("homephone").trim();
 
-                        out.print(home);
-
                         UserData datauser = new UserData();
                         datauser.setIdcard(request.getParameter("idcard").replaceAll("-", "").replaceAll("_", "").trim());
                         datauser.setPrefix(request.getParameter("prefix").trim());

@@ -14,11 +14,11 @@
     </head>
     <body>
         <div class="container">
-            <div class="card mt-5 shadow col-sm-12 col-md-6 mx-auto">
-                <div class="card-header">
+            <div class="card mt-5 shadow col-sm-12 col-md-6 mx-auto border-primary">
+                <div class="card-header bg-primary text-light">
                     Admin login 
                 </div>
-                <div class="card-body">
+                <div class="card-body text-primary">
                     <div class="mb-3">
                         <label for="Username" class="form-label">Username : </label>
                         <input type="text" class="form-control form-control-sm" id="Username" placeholder="Username">
@@ -57,7 +57,7 @@
                                 })
                                 
                                 setTimeout(function(){
-                                    window.location.replace("main.jsp");
+                                    window.location.replace(jsdecode.link);
                                 }, 1000);
                             }else if(jsdecode.status == "false"){
                                 Swal.fire({
@@ -65,6 +65,9 @@
                                     text:"Login Error",
                                     title:"Login"
                                 })
+                                setTimeout(function(){
+                                    window.location.replace(jsdecode.link);
+                                }, 1000);
                             }
                         }
                     });

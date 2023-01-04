@@ -8,20 +8,30 @@ package Model;
  *
  * @author pakutsing
  */
-public class Admin {
+public class AdminDetail {
 
     private String admin_id;
     private String admin_user;
     private String admin_pass;
+    private String admin_name;
 
-    public Admin(String admin_id, String admin_user, String admin_pass) {
+    public AdminDetail(String admin_name, String admin_id, String admin_user, String admin_pass) {
         this.admin_id = admin_id;
         this.admin_user = admin_user;
         this.admin_pass = admin_pass;
+        this.admin_name = admin_name;
     }
 
-    public Admin() {
+    public AdminDetail() {
         super();
+    }
+
+    public String getAdmin_name() {
+        return admin_name;
+    }
+
+    public void setAdmin_name(String admin_name) {
+        this.admin_name = admin_name;
     }
 
     public String getAdmin_id() {

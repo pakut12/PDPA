@@ -17,10 +17,10 @@
         <div class="container">
             <div class="row mt-5">
                 <div class="col-md-12 col-sm-12">
-                    <div class="card text-white bg-primary mb-3">
-                        <div class="card-header">Header</div>
-                        <div class="card-body">
-                           
+                    <div class="card border-primary mb-3 " >
+                        <div class="card-header bg-primary text-light">Welcome</div>
+                        <div class="card-body text-primary text-center">
+                            <h5 class="card-title">Welcome To Admin</h5>  
                         </div>
                     </div>
                 </div>
@@ -31,36 +31,7 @@
         </footer>
         <script>
             $(document).ready(function(){
-                function login(){
-                    $.ajax({
-                        type:"post",
-                        url:"../Admin",
-                        data:{
-                            type:"login",
-                            user:$("#Username").val(),
-                            pass:$("#Password").val()
-                        },
-                        success:function(msg){
-                            var jsdecode = JSON.parse(msg);
-                            if(jsdecode.status == "true"){
-                                Swal.fire({
-                                    icon:"success",
-                                    text:"Login Success",
-                                    title:"Login"
-                                })
-                            }else if(jsdecode.status == "false"){
-                                Swal.fire({
-                                    icon:"error",
-                                    text:"Login Error",
-                                    title:"Login"
-                                })
-                            }
-                        }
-                    });
-                }
-                $("#login").click(function(){
-                    login();
-                });
+                $("#homepage").addClass("active");
             });
         </script>
     </body>

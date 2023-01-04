@@ -10,6 +10,7 @@ package Model;
  */
 public class UserData {
 
+    private String id;
     private String idcard;
     private String prefix;
     private String firstname;
@@ -29,7 +30,8 @@ public class UserData {
     private String homephone;
     private String phonenumber;
 
-    public UserData(String idcard, String prefix, String firstname, String surname, String birthday, String age, String email, String village, String number, String group, String alley, String road, String district, String amphoe, String province, String zipcode, String homephone, String phonenumber) {
+    public UserData(String id, String idcard, String prefix, String firstname, String surname, String birthday, String age, String email, String village, String number, String group, String alley, String road, String district, String amphoe, String province, String zipcode, String homephone, String phonenumber) {
+        this.id = id;
         this.idcard = idcard;
         this.prefix = prefix;
         this.firstname = firstname;
@@ -50,9 +52,16 @@ public class UserData {
         this.phonenumber = phonenumber;
     }
 
-  
     public UserData() {
         super();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getAge() {
@@ -198,7 +207,4 @@ public class UserData {
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
-
-   
-    
 }
